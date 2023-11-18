@@ -129,8 +129,8 @@ public class ServicioProxyBiblioteca {
 	}
 	
 	/**
-	 * Metodo que devuelve todos los libros o todas las personas filtradas
-	 * por nombre del web service
+	 * Metodo que devuelve todos los libros o todos los libros filtrados
+	 * por titulo del web service
 	 * 
 	 * @param nombre en caso de ser distinto de null, devolvera el listado
 	 * filtrado por el nombre que le hayamos pasado en este parametro. En caso
@@ -145,7 +145,7 @@ public class ServicioProxyBiblioteca {
 		}
 		
 		try {
-			//Ej http://localhost:8080/libros?titulo=Harry Potter y la piedra filosofal GET
+			//Ej: http://localhost:8080/libros?titulo=Harry Potter y la piedra filosofal GET
 			ResponseEntity<Libro[]> response =
 					  restTemplate.getForEntity(URL + queryParams,Libro[].class);
 			Libro[] arrayLibros = response.getBody();
@@ -156,12 +156,7 @@ public class ServicioProxyBiblioteca {
 		    return null;
 		}
 	}
-	
-	
-	//public List<Libro> list() {
-		//return listaLibros;
-		
-	}
+}
 
 
 	
