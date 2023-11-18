@@ -132,16 +132,16 @@ public class ServicioProxyBiblioteca {
 	 * Metodo que devuelve todos los libros o todos los libros filtrados
 	 * por titulo del web service
 	 * 
-	 * @param nombre en caso de ser distinto de null, devolvera el listado
-	 * filtrado por el nombre que le hayamos pasado en este parametro. En caso
-	 * de que sea null, el listado de las personas sera completo
-	 * @return el listado de las personas segun el parametro de entrada o 
+	 * @param titulo en caso de ser distinto de null, devolvera el listado
+	 * filtrado por el titulo que le hayamos pasado en este parametro. En caso
+	 * de que sea null, el listado de los libros sera completo
+	 * @return el listado de los libros segun el parametro de entrada o 
 	 * null en caso de algun error con el servicio REST
 	 */
 	public List<Libro> findbyTitle(String titulo){
 		String queryParams = "";		
 		if(titulo != null) {
-			queryParams += "?nombre=" + titulo;
+			queryParams += "?titulo=" + titulo;
 		}
 		
 		try {
@@ -151,7 +151,7 @@ public class ServicioProxyBiblioteca {
 			Libro[] arrayLibros = response.getBody();
 			return Arrays.asList(arrayLibros);//convertimos el array en un ArrayList
 		} catch (HttpClientErrorException e) {
-			System.out.println("listar -> Error al obtener la lista de personas");
+			System.out.println("listar -> Error al obtener la lista de libros");
 		    System.out.println("listar -> Codigo de respuesta: " + e.getStatusCode());
 		    return null;
 		}
